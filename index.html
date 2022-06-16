@@ -20,9 +20,12 @@
           <div class="line"></div>
         </div>
         <div class="logo-wraper"><div class="logo"></div><span>Time to Shop</span></div>
-        <div class="header-cart"><i class="fas fa-shopping-cart"></i><span class="haeder-cart__number">0</span></div>
+        <div class="header-cart"><i class="fas fa-shopping-cart">
+          </i><span class="haeder-cart__number cartItemsNumber">0</span>
+        </div>
         <ul class="navbar__menu navbarMenu">
-          <li class="navbar__menu-icon"><i class="fas fa-home icon"></i><span>Home</span></li>
+          <li class="navbar__menu-icon">
+            <i class="fas fa-home icon"></i><span>Home</span></li>
           <li class="navbar__menu-icon">
             <i class="fa fa-product-hunt icon" aria-hidden="true"></i>
             <span>Products</span>
@@ -34,8 +37,8 @@
     </header>
     <section class="products container block">
       <h2 class="products-title">Our Products</h2>
-      <div class="product__items block">
-        <div class="product__item-wrapper">
+      <div class="product__items block productItem">
+        <!-- <div class="product__item-wrapper">
           <div class="product__item">
             <div class="product__item-img" style="background-image:url('./assets/images/products/1.jpg');"></div>
             <div class="product__item-caption">
@@ -46,8 +49,8 @@
               <button class="product-btn">Add to Cart</button>
             </div>
           </div>
-        </div>
-        <div class="product__item-wrapper">
+        </div> -->
+        <!-- <div class="product__item-wrapper">
           <div class="product__item">
             <div class="product__item-img" style="background-image: url('./assets/images/products/2.jpg');"></div>
             <div class="product__item-caption">
@@ -106,7 +109,7 @@
               <button class="product-btn">Add to Cart</button>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
     <section>
@@ -116,49 +119,52 @@
           <p class="modal__title">Your Cart</p>
           <span class="modal__close"><i class="fa fa-times" aria-hidden="true"></i></span>
         </div>
-        <div class="modal__cart-item">
-          <div class="modal__cart-img">
-            <img src="./assets/images/products/1.jpg" alt="">
+        <div class="modal__content modalContent">
+          <!-- <div class="modal__cart-item">
+            <div class="modal__cart-img">
+              <img src="./assets/images/products/1.jpg" alt="">
+            </div>
+            <div class="modal__cart-caption">
+              <span>Floral Dress</span>
+              <p class="modal__cart-price">10$</p>
+            </div>
+            
+            <div class="modal__cart-counter">
+              <i class='fas fa-angle-up count-up'></i>
+              <span class="counter">5</span>
+              <i class='fas fa-angle-down count-down'></i>
+  
+            </div>
+            <span class="modal__cart-remove"><i class='far fa-trash-alt'></i>
+            </span>
           </div>
-          <div class="modal__cart-caption">
-            <span>Floral Dress</span>
-            <p class="modal__cart-price">10$</p>
-          </div>
-          
-          <div class="modal__cart-counter">
-            <i class='fas fa-angle-up count-up'></i>
-            <span class="counter">5</span>
-            <i class='fas fa-angle-down count-down'></i>
-
-          </div>
-          <span class="modal__cart-remove"><i class='far fa-trash-alt'></i>
-          </span>
+          <div class="modal__cart-item">
+            <div class="modal__cart-img">
+              <img src="./assets/images/products/2.jpg" alt="">
+            </div>
+            <div class="modal__cart-caption">
+              <span>Floral Dress</span>
+              <p class="modal__cart-price">10$</p>
+            </div>
+            
+            <div class="modal__cart-counter">
+              <i class='fas fa-angle-up count-up'></i>
+              <span class="counter">5</span>
+              <i class='fas fa-angle-down count-down'></i>
+  
+            </div>
+            <span class="modal__cart-remove"><i class='far fa-trash-alt'></i>
+            </span>
+          </div> -->
         </div>
-        <div class="modal__cart-item">
-          <div class="modal__cart-img">
-            <img src="./assets/images/products/2.jpg" alt="">
-          </div>
-          <div class="modal__cart-caption">
-            <span>Floral Dress</span>
-            <p class="modal__cart-price">10$</p>
-          </div>
-          
-          <div class="modal__cart-counter">
-            <i class='fas fa-angle-up count-up'></i>
-            <span class="counter">5</span>
-            <i class='fas fa-angle-down count-down'></i>
-
-          </div>
-          <span class="modal__cart-remove"><i class='far fa-trash-alt'></i>
-          </span>
-        </div>
+        
         <div class="modal__cart-footer">
-          <p class="modal__cart-total-price">total price : <span>127.91$</span></p>
-          <button class="product-btn product-btn--secondary">Clear Cart</button>
+          <p class="modal__cart-total-price">total price : <span class="cartTotalPrice">0</span></p>
+          <button class="product-btn product-btn--secondary clearCartBtn">Clear Cart</button>
           <button class="product-btn product-btn--confirm">Confirm</button>
         </div>
       </div>
     </section>
-    <script src="./js/app.js"></script>
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>
