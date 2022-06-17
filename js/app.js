@@ -13,6 +13,7 @@ const cartTotalPrice = document.querySelector(".cartTotalPrice");
 const cartItemsNumber = document.querySelector(".cartItemsNumber");
 const modalContent = document.querySelector(".modalContent");
 const clearCartBtn = document.querySelector(".clearCartBtn");
+const emptyMessage = document.querySelector(".emptyMessage");
 
 let cart = [];
 let buttonsDom = [];
@@ -158,6 +159,7 @@ class UI {
         this.setCartValue(cart);
 
         if (modalContent.children.length === 0) {
+          emptyMessage.style.display = "block";
           modalClose();
         }
       } else if (event.target.classList.contains("removeCartItem")) {
@@ -166,6 +168,10 @@ class UI {
         this.removeItem(removedItem.id);
         storage.saveCart(cart);
         modalContent.removeChild(removeItem.parentElement.parentElement);
+        if (modalContent.children.length === 0) {
+          emptyMessage.style.display = "block";
+          modalClose();
+        }
       }
     });
   }
@@ -175,6 +181,7 @@ class UI {
     while (modalContent.children.length) {
       modalContent.removeChild(modalContent.children[0]);
     }
+    emptyMessage.style.display = "block";
     modalClose();
   }
 
@@ -235,6 +242,7 @@ mobileMenu.addEventListener("click", (e) => {
 
 window.onscroll = function () {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+
     navbar.style.backgroundColor = "#693eb1";
     mainHeader.style.top = "0px";
   } else {

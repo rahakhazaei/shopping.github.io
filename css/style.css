@@ -229,7 +229,7 @@ body {
     font-size: 2rem;
     text-align: center;
     margin: 0;    
-    padding: 10rem 0 2rem 0;
+    padding: 7rem 0 2rem 0;
 }
 
 
@@ -418,12 +418,19 @@ body {
 }
 
 .modal__title {
-    margin: 0 0 2rem 0;
+    /* margin: 0 0 2rem 0; */
+    margin: 0;
     padding-bottom: 1rem; 
     text-align: center;
     font-size: 1.8rem;
     font-family: var(--font-family);
     border-bottom: 1px solid var(--secondary-color);
+}
+
+.modal__cart-emty-message {
+    display: none;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .modal__cart-item {
@@ -533,18 +540,12 @@ body {
     
     .modal {
         width: 500px;
-        height: auto;
+        height: 500px;
         padding: 2rem;
     }
 
     .modal__cart-item {
         height: 100px;
-        /* margin-bottom: 2rem; */
-    }
-
-    .modal__cart-img {
-        /* width: 30%; */
-        /* height: 110px; */
     }
 
     .modal__cart-caption p {
