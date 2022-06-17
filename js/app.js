@@ -115,12 +115,17 @@ class UI {
     // get cart from storage;
     cart = storage.getCart() || [];
     // add cart item and show in modal
-    cart.forEach((cartItem) => {
-      this.addCartItem(cartItem);
-    });
+    if (cart.length === 0) {
+      emptyMessage.style.display="block";
+    } else {
+      emptyMessage.style.display="none";
+      cart.forEach((cartItem) => {
+        this.addCartItem(cartItem);
+      });
 
-    // set values : total price and cart total numbers
-    this.setCartValue(cart);
+      // set values : total price and cart total numbers
+      this.setCartValue(cart);
+    }
   }
 
   cartLogic() {
@@ -151,7 +156,7 @@ class UI {
           this.removeItem(removeItem.id);
           reduceQuantity.parentElement.parentElement.remove();
           return;
-        } 
+        }
         reduceQuantity.previousElementSibling.innerText = removeItem.quantity;
         // save cart
         storage.saveCart(cart);
@@ -163,8 +168,10 @@ class UI {
           modalClose();
         }
       } else if (event.target.classList.contains("removeCartItem")) {
-        const removeItem= event.target;
-        const removedItem = cart.find(item=> item.id === parseInt(removeItem.dataset.id));
+        const removeItem = event.target;
+        const removedItem = cart.find(
+          (item) => item.id === parseInt(removeItem.dataset.id)
+        );
         this.removeItem(removedItem.id);
         storage.saveCart(cart);
         modalContent.removeChild(removeItem.parentElement.parentElement);
@@ -238,15 +245,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 mobileMenu.addEventListener("click", (e) => {
   navbarMenu.classList.toggle("show");
-  navbarMenu.style.WebkitTransition = 'all 1s';
+  navbarMenu.style.WebkitTransition = "all 1s";
 });
 
 window.onscroll = function () {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-
     navbar.style.backgroundColor = "#693eb1";
     mainHeader.style.top = "0px";
-    navbar.style.WebkitTransition = 'all 1s';
+    navbar.style.WebkitTransition = "all 1s";
   } else {
     navbar.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
     mainHeader.style.top = "20px";

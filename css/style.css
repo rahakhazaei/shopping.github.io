@@ -146,6 +146,7 @@ body {
     width: 25px;
     height: 25px;
     padding: 1px;
+    line-height: 1.5;
 }
 
 .header-cart {
