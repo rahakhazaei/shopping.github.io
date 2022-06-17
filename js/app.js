@@ -1,6 +1,5 @@
 //imports
 import { productsData } from "./products.js";
-
 const mobileMenu = document.querySelector(".mobileMenu");
 const navbarMenu = document.querySelector(".navbarMenu");
 const mainHeader = document.querySelector(".main-header");
@@ -14,6 +13,7 @@ const cartTotalPrice = document.querySelector(".cartTotalPrice");
 const cartItemsNumber = document.querySelector(".cartItemsNumber");
 const modalContent = document.querySelector(".modalContent");
 const clearCartBtn = document.querySelector(".clearCartBtn");
+
 let cart = [];
 let buttonsDom = [];
 
@@ -88,11 +88,11 @@ class UI {
       
       <div class="modal__cart-counter">
         <i class='fas fa-angle-up count-up' data-id=${cartItem.id}></i>
-        <span class="counter">${cartItem.quantity}</span>
+        <span class="counter itemQuantity">${cartItem.quantity}</span>
         <i class='fas fa-angle-down count-down' data-id=${cartItem.id}></i>
 
       </div>
-      <span class="modal__cart-remove" data-id=${cartItem.id}><i class='far fa-trash-alt'></i>
+      <span class="modal__cart-remove" data-id=${cartItem.id}><i class='far fa-trash-alt removeCartItem' data-id=${cartItem.id}></i>
       </span>
     </div>`;
   }
@@ -123,7 +123,51 @@ class UI {
   }
 
   cartLogic() {
+    // clear cart
     clearCartBtn.addEventListener("click", (e) => this.clearCart());
+    // cart functionality
+    modalContent.addEventListener("click", (event) => {
+      if (event.target.classList.contains("count-up")) {
+        const addQuantity = event.target;
+        // get item from cart
+        const addedItem = cart.find(
+          (item) => item.id === parseInt(addQuantity.dataset.id)
+        );
+        addedItem.quantity++;
+        // save cart
+        storage.saveCart(cart);
+        // update cart value
+        this.setCartValue(cart);
+        // update cart item in UI
+        addQuantity.nextElementSibling.innerText = addedItem.quantity;
+      } else if (event.target.classList.contains("count-down")) {
+        const reduceQuantity = event.target;
+        const removeItem = cart.find(
+          (item) => item.id === parseInt(reduceQuantity.dataset.id)
+        );
+        removeItem.quantity--;
+        if (removeItem.quantity <= 0) {
+          this.removeItem(removeItem.id);
+          reduceQuantity.parentElement.parentElement.remove();
+          return;
+        } 
+        reduceQuantity.previousElementSibling.innerText = removeItem.quantity;
+        // save cart
+        storage.saveCart(cart);
+        // update cart value
+        this.setCartValue(cart);
+
+        if (modalContent.children.length === 0) {
+          modalClose();
+        }
+      } else if (event.target.classList.contains("removeCartItem")) {
+        const removeItem= event.target;
+        const removedItem = cart.find(item=> item.id === parseInt(removeItem.dataset.id));
+        this.removeItem(removedItem.id);
+        storage.saveCart(cart);
+        modalContent.removeChild(removeItem.parentElement.parentElement);
+      }
+    });
   }
 
   clearCart() {
