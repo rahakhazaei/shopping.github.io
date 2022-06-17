@@ -238,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 mobileMenu.addEventListener("click", (e) => {
   navbarMenu.classList.toggle("show");
+  navbarMenu.style.WebkitTransition = 'all 1s';
 });
 
 window.onscroll = function () {
@@ -245,6 +246,7 @@ window.onscroll = function () {
 
     navbar.style.backgroundColor = "#693eb1";
     mainHeader.style.top = "0px";
+    navbar.style.WebkitTransition = 'all 1s';
   } else {
     navbar.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
     mainHeader.style.top = "20px";
