@@ -108,7 +108,7 @@ class UI {
       return acc + curr.quantity * curr.price;
     }, 0);
 
-    cartTotalPrice.innerText = `${totalPrice} $`;
+    cartTotalPrice.innerText = `${totalPrice.toFixed(2)} $`;
     cartItemsNumber.innerText = tempCartItems;
   }
 
