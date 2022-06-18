@@ -71,6 +71,7 @@ class UI {
         // update cart value
         this.setCartValue(cart);
         // add to cart item
+        emptyMessage.style.display="none";
         this.addCartItem(addedProduct);
         //get cart storage
       });
