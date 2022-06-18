@@ -334,7 +334,12 @@ body {
 .product-btn:disabled {
   filter: saturate(0.2) opacity(0.5);
   -webkit-filter: saturate(0.2) opacity(0.5);
+  color: var(--primary-color);
   cursor: not-allowed;
+}
+
+.product-btn:disabled:hover {
+    color: var(--text-color);
 }
 
 .product-btn:hover {
